@@ -183,6 +183,8 @@ protected:
 
 	void HighlightInventorySlot();
 
+	UFUNCTION(BlueprintCallable)
+	EPhysicalSurface GetSurfaceType();
 	
 
 public:
@@ -242,12 +244,12 @@ private:
 	float MouseAimingLookUpRate;
 
 	/** Randomized gunshot sound cue */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	class USoundCue* FireSound;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	//class USoundCue* FireSound;
 	
 	/** Flash spawned at BarrelSocket */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	class UParticleSystem* MuzzleFlash;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	//class UParticleSystem* MuzzleFlash;
 
 	/** Montage for firing the weapon*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
@@ -255,7 +257,7 @@ private:
 
 	/** Particles spawned upon bullet impact */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	UParticleSystem* ImpactParticles;
+	class UParticleSystem* ImpactParticles;
 
 	/** Smoke trail for bullets */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
@@ -311,7 +313,7 @@ private:
 	bool bShouldFire;
 
 	/** Rate of automatic gun fire*/
-	float AutomaticFireRate;
+	//float AutomaticFireRate;
 
 	/** Sets a timer between gunshots */
 	FTimerHandle AutoFireTimer;
@@ -517,4 +519,6 @@ public:
 	void StartEquipSoundTimer();
 
 	void UnHighlightInventorySlot();
+
+	FORCEINLINE	 AWeapon* GetEquippedWeapon() const { return EquippedWeapon; }
 };
